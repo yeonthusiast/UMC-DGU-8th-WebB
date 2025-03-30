@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid and flex</title>
+    <style>
+        *{
+            margin:0;
+        }
+        .grid-container{
+            display: grid;
+            grid-template-rows: 75px 300px 300px 100px;
+        }
+
+        .item{
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+            display: grid;
+            place-items: center;
+        }
+
+        .nav{
+            display: flex;
+        }
+        .nav__header{
+            background-color: #0F1629;
+            flex: 1;
+        }
+        .nav__menu{
+            background-color: #EF3D4D;
+            flex: 3;
+        }
+
+        .hero{
+            background-color: #4C86C6;
+        }
+
+        .section{
+            display: flex;
+        }
+        .section__main{
+            background-color: #24344B;
+            flex: 1;
+        }
+        .section__article{
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            align-items: flex-end;
+        }
+        .section__article-image{
+            background-color: #C1E4E6;
+            width:50%;
+            height: 50%;
+            color:black;
+        }
+        .section__article-extra{
+            background-color: #4DBD97;
+            width:50%;
+            height: 50%;
+            color:black;
+        }
+        
+        .banner{
+            color: black;
+            background-color: #FFD169;
+        }
+    </style>
+</head>
+<body>
+    <!--4행 grid 안에, flex를 사용하자-->
+    <div class="grid-container">
+        <div class="nav">
+            <div class="nav__header item">HEADER</div>
+            <div class="nav__menu item">MENU</div>
+        </div>
+        <div class="hero item">HERO</div>
+        <div class="section">
+            <div class="section__main item">MAIN</div>
+            <div class="section__article">
+                <div class="section__article-image item">IMAGE</div>
+                <div class="section__article-extra item">EXTRA</div>
+            </div>
+        </div>
+        <div class="banner item">BANNER</div>
+    </div>
+</body>
+</html>
