@@ -1,7 +1,7 @@
 // not-found.tsx
 const NotFound = () => {
     return (
-        <h1>찾을 수 없는 페이지</h1>
+        <h1>찾을 수 없는 페이지입니다.</h1>
     );
 };
 

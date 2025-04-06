@@ -6,6 +6,7 @@ import HomePage from './pages/home.tsx';
 import Movies from "./pages/movies.tsx";
 import RootLayout from "./layout/root-layout.tsx";
 import NotFound from './pages/not-found.tsx';
+import MovieDetailPage from './pages/movieDetail.tsx';
 
 const router = createBrowserRouter([
     {
@@ -19,8 +20,12 @@ const router = createBrowserRouter([
             },
             {
 		            // /:을 활용해서, 동적으로 바뀌는 부분의 이름을 정의해줍시다.
-                path: 'movies/:movieId',
+                path: 'movies/:category',
                 element: <Movies/>
+            },
+            {
+            path: 'movies/:movieId',
+            element: <MovieDetailPage/>
             }
         ]
     },
