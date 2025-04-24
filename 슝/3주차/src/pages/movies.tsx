@@ -66,16 +66,16 @@ const MoviesPage = () => {
       </button>
     </div>
 
-    {isPending && (
+    {isPending && ( //아직 로딩상태일 때
       <div className='flex items-center justify-center h-dvh'>
         <LoadingSpinner/>
       </div>
     )}
 
-    {!isPending && (
+    {!isPending && ( //로딩이 아닐 때 = 로딩 끝난 경우
     <div className='p-10 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
       {movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
-    </div>
+    </div> //grid로 moviecard들을 보여줌
     )}
   </>)
   ;

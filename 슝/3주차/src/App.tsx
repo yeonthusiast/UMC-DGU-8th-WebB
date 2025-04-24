@@ -6,7 +6,7 @@ import HomePage from './pages/home.tsx';
 import Movies from "./pages/movies.tsx";
 import RootLayout from "./layout/root-layout.tsx";
 import NotFound from './pages/not-found.tsx';
-import MovieDetailPage from './pages/movieDetail.tsx';
+import MovieDetailPage from './pages/detailPage.tsx';
 
 const router = createBrowserRouter([
     {
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
                 element: <Movies/>
             },
             {
-            path: 'movies/:movieId',
-            element: <MovieDetailPage/>
+                path: 'movies/movie/:movieId',
+                element: <MovieDetailPage/>
             }
         ]
     },
