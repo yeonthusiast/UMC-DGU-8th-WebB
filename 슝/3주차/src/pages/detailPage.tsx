@@ -17,7 +17,7 @@ const MovieDetailPage = () =>{
     const {movieId} = useParams<{movieId : string;}>();
     
     useEffect(() => {
-        const fetchMovies = async () : Promise<void> => {
+        const fetchMovies = async () => {
           setIsPending(true);
     
           try{
