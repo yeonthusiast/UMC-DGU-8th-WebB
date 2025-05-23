@@ -26,12 +26,12 @@ const MyPage = () => {
     }
 
     return(
-        <div>
-            <h1>{data?.data.name}님 환영합니다.</h1>
-            <img src={data?.data.avatar as string} alt={"구글 로고"}/>
+        <div className="flex flex-col items-center justify-center h-full gap-4 text-white">
+            <h1 className="text-lg font-bold">{data?.data.name}님 환영합니다.</h1>
+            <img src={data?.data.avatar as string} alt={"프로필 이미지"}/>
             <h1>{data?.data.email}</h1>
 
-            <button className="cursor-pointer bg-blue-300 rounded-sm p-5 hover:scale-90"
+            <button className="w-3xs bg-fuchsia-500 text-white py-3 rounded-md text-lg font-medium hover:bg-fuchsia-700 transition-colors cursor-pointer disabled:bg-gray-800"
                 onClick={handleLogout}>
                 로그아웃
             </button>
