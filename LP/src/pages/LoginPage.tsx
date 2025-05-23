@@ -1,13 +1,19 @@
 import { UserSigninInformation, validateSignin } from "../utils/validate";
 import useForm from "../hooks/useForm";
-import { postSignin } from "../apis/auth";
-import { useLocalStorage } from "../hooks/useLocalStorage";
-import { LOCAL_STORAGE_KEY } from "../constants/key";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const LoginPage = () => {
-    const {setItem} = useLocalStorage(LOCAL_STORAGE_KEY.accessToken);
+    const {login, accessToken} = useAuth();
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(accessToken){
+            navigate("/");
+        }
+    })
+
     const {values, errors, touched, getInputProps} = useForm<UserSigninInformation>({
         initialValue:{
             email:"",
@@ -18,14 +24,12 @@ const LoginPage = () => {
     });
 
     const handleSubmit = async() => {
-        try{
-            const response = await postSignin(values);
-            setItem(response.data.accessToken);
-            navigate('/');
-        }catch(error){
-            alert(error);
-        }
+       await login(values);
     };
+
+    const handleGoogleLogin = () => {
+        window.location.href = import.meta.env.VITE_SERVER_API_URL + "/v1/auth/google/login";
+    }
 
     // 오류가 하나라도 있거나 입력값이 비어있으면 버튼 비활성화
     const isDisabled =
@@ -62,6 +66,14 @@ const LoginPage = () => {
                     disabled={isDisabled}
                     className="w-full bg-fuchsia-500 text-white py-3 rounded-md text-lg font-medium hover:bg-fuchsia-700 transition-colors cursor-pointer disabled:bg-gray-800">
                     로그인
+                </button>
+                <button
+                    type="button" onClick={handleGoogleLogin}
+                    className="w-full bg-white text-black py-3 rounded-md text-lg font-medium hover:bg-stone-200 transition-colors cursor-pointer disabled:bg-gray-800">
+                        <div className="flex items-center justify-center gap-4">
+                            <img src={"/google.svg"} alt="Google Logo image"/>
+                            <span>Google 로그인</span>
+                        </div>
                 </button>
             </div>
             
