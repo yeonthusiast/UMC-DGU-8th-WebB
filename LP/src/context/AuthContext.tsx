@@ -65,7 +65,7 @@ export const AuthProvider = ({children}:PropsWithChildren) => {
             await postLogout();
             removeAccessTokenFromStorage();
             removeRefreshTokenFromStorage();
-
+            
             setAccessToken(null);
             setRefreshToken(null);
 
